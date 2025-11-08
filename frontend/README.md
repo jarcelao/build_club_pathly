@@ -1,15 +1,28 @@
-# frontend
+# Frontend
 
-To install dependencies:
+Next.js 16 frontend for the AI Career Roadmap Generator.
+
+## Setup
 
 ```bash
 bun install
 ```
 
-To run:
+## Development
 
 ```bash
-bun run index.ts
+bun run dev
 ```
 
-This project was created using `bun init` in bun v1.3.1. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+## Build
+
+```bash
+bun run build
+```
+
+## Features
+
+- React 19 with TypeScript
+- Tailwind CSS for styling
+- Mermaid.js diagram rendering
+- Responsive design with animations

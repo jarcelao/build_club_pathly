@@ -4,9 +4,6 @@ export const GenerateRoadmapRequestSchema = z.object({
   topic: z.string()
     .min(3, 'Topic must be at least 3 characters')
     .max(100, 'Topic must not exceed 100 characters'),
-  openaiBaseUrl: z.string().url('Invalid OpenAI base URL').optional(),
-  openaiModel: z.string().optional(),
-  openaiApiKey: z.string().optional(),
 });
 
 export type GenerateRoadmapRequest = z.infer<typeof GenerateRoadmapRequestSchema>;

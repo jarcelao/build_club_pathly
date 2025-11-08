@@ -36,8 +36,8 @@ export class LLMService {
   private client: OpenAI;
   private config: OpenAIConfig;
 
-  constructor(config?: OpenAIConfig) {
-    this.config = config || defaultConfig;
+  constructor() {
+    this.config = defaultConfig;
     this.client = createOpenAIClient(this.config);
   }
 
@@ -127,5 +127,3 @@ Guidelines:
 }
 
 export const llmService = new LLMService();
-
-export { createOpenAIClient, getDefaultConfig };

@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 import { Router } from 'express';
-import { llmService, LLMService, type OpenAIConfig } from '../services/llmService';
+import { llmService } from '../services/llmService';
 import { GenerateRoadmapRequestSchema } from '../utils/validators';
 import { ZodError } from 'zod';
 
@@ -15,24 +15,8 @@ router.post('/generate', async (req: Request, res: Response, next: NextFunction)
     // Validate request body
     const validatedData = GenerateRoadmapRequestSchema.parse(req.body);
 
-    // Create service instance with custom config if provided
-    let service = llmService;
-
-    if (
-      validatedData.openaiBaseUrl ||
-      validatedData.openaiModel ||
-      validatedData.openaiApiKey
-    ) {
-      const customConfig: OpenAIConfig = {
-        apiKey: validatedData.openaiApiKey || process.env.OPENAI_API_KEY || '',
-        baseURL: validatedData.openaiBaseUrl || process.env.OPENAI_BASE_URL,
-        model: validatedData.openaiModel || process.env.OPENAI_MODEL || 'gpt-3.5-turbo',
-      };
-      service = new LLMService(customConfig);
-    }
-
     // Generate roadmap
-    const roadmap = await service.generateRoadmap(validatedData.topic);
+    const roadmap = await llmService.generateRoadmap(validatedData.topic);
 
     res.status(200).json(roadmap);
   } catch (error) {

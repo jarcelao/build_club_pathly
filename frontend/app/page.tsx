@@ -11,15 +11,12 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | undefined>();
 
-  const handleGenerateRoadmap = async (
-    topic: string,
-    options?: { openaiBaseUrl?: string; openaiModel?: string; openaiApiKey?: string }
-  ) => {
+  const handleGenerateRoadmap = async (topic: string) => {
     setIsLoading(true);
     setError(undefined);
 
     try {
-      const result = await generateRoadmap(topic, options);
+      const result = await generateRoadmap(topic);
       setRoadmap(result);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');

@@ -94,12 +94,20 @@ Open [http://localhost:3000](http://localhost:3000) in your browser
 ## Configuration
 
 ### Backend (.env)
-```
+```bash
 NODE_ENV=development
 PORT=4000
 OPENAI_API_KEY=sk-...
 OPENAI_MODEL=gpt-3.5-turbo
+OPENAI_BASE_URL=https://api.openai.com/v1
 ```
+
+**Note:** The application supports custom OpenAI-compatible endpoints. You can use:
+- OpenAI API (default)
+- Local models via Ollama
+- Other OpenAI-compatible providers
+
+Simply update `OPENAI_BASE_URL` and `OPENAI_MODEL` in your `.env` file or use the advanced options in the web interface.
 
 ### Frontend (.env.local)
 ```
@@ -142,6 +150,46 @@ NEXT_PUBLIC_API_URL=http://localhost:4000
 ```
 
 ## Development
+
+### Quick Start
+
+Use the provided development script to start both servers:
+
+```bash
+./dev.sh
+```
+
+This will:
+- Validate your configuration
+- Start the backend on port 4000
+- Start the frontend on port 3000
+- Handle cleanup automatically
+
+### Manual Setup
+
+If you prefer to start servers manually:
+
+**Backend (Terminal 1)**
+```bash
+cd backend
+bun install
+bun run dev
+```
+
+**Frontend (Terminal 2)**
+```bash
+cd frontend
+bun install
+bun run dev
+```
+
+### Code Quality
+
+This project uses:
+- **TypeScript** for type safety
+- **Zod** for runtime validation
+- **ESLint** rules via TypeScript strict mode
+- **Tailwind CSS** for consistent styling
 
 ### Build Backend
 ```bash

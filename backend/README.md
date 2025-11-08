@@ -1,15 +1,29 @@
-# backend
+# Backend
 
-To install dependencies:
+Express.js backend for the AI Career Roadmap Generator.
+
+## Setup
 
 ```bash
 bun install
 ```
 
-To run:
+## Development
 
 ```bash
-bun run index.ts
+bun run dev
 ```
 
-This project was created using `bun init` in bun v1.3.1. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+## Build
+
+```bash
+bun run build
+```
+
+## Features
+
+- Express.js with TypeScript
+- OpenAI API integration
+- Zod validation
+- Error handling middleware
+- Mermaid diagram generation
