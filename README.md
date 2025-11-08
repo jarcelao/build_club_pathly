@@ -183,4 +183,4 @@ bun run build
 
 ## License
 
-MIT
+Unlicense
