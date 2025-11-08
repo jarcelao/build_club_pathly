@@ -107,7 +107,7 @@ OPENAI_BASE_URL=https://api.openai.com/v1
 - Local models via Ollama
 - Other OpenAI-compatible providers
 
-Simply update `OPENAI_BASE_URL` and `OPENAI_MODEL` in your `.env` file or use the advanced options in the web interface.
+Simply update `OPENAI_BASE_URL` and `OPENAI_MODEL` in your `.env` file.
 
 ### Frontend (.env.local)
 ```
@@ -216,8 +216,6 @@ bun run build
 ## Notes
 
 - The MVP focuses on core functionality without caching, databases, or user accounts
-- Each roadmap generation costs approximately $0.01-0.05 (varies by model)
-- Typical generation time is 5-15 seconds
 - Diagrams are generated on the backend using Mermaid syntax
 
 ## Future Enhancements
