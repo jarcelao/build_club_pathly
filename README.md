@@ -1,232 +1,220 @@
-# AI-Powered Career Roadmap Generator
+# Pathly
 
-Generate personalized learning roadmaps using AI-powered insights. Input a topic, get back a structured career/learning path with estimated hours and skill levels.
+An AI-powered learning roadmap generator that creates personalized, structured learning paths for any topic. Define your learning goals, and let Pathly create a comprehensive roadmap with phases, resources, projects, and milestones tailored to your needs.
+
+## Features
+
+- **AI-Powered Roadmap Generation** - Generate customized learning paths using advanced LLM technology
+- **Flexible Learning Parameters** - Choose your topic, difficulty level (Beginner/Intermediate/Advanced), and timeframe (1/3/6 months)
+- **Comprehensive Roadmaps** - Get structured learning paths with:
+  - Multi-phase progression
+  - Curated learning resources (courses, tutorials, documentation, books)
+  - Hands-on projects with acceptance criteria
+  - Milestones and checkpoints
+  - Assessment guidelines
+  - Community resources and support channels
+  - Troubleshooting guides
+- **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
+- **Dark Mode Support** - Built-in theme switching for comfortable learning any time
+- **Real-time Validation** - Instant feedback on form inputs
+- **Modern UI** - Beautiful, accessible components powered by shadcn/ui
+
+## Tech Stack
+
+### Frontend
+
+- **[Next.js 16](https://nextjs.org/)** - React framework with App Router
+- **[React 19](https://react.dev/)** - UI library
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe development
+- **[Tailwind CSS 4](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[shadcn/ui](https://ui.shadcn.com/)** - High-quality React components
+- **[React Hook Form](https://react-hook-form.com/)** - Efficient form management
+- **[Zod](https://zod.dev/)** - Schema validation
+
+### Backend & AI
+
+- **[Vercel AI SDK](https://sdk.vercel.ai/)** - LLM integration and streaming
+- **[llama-4-maverick](https://www.llama.com/models/llama-4/)** - AI model for roadmap generation
+
+### Additional Libraries
+
+- **[Next Themes](https://github.com/pacocur/next-themes)** - Dark mode support
+- **[Sonner](https://sonner.emilkowal.ski/)** - Toast notifications
+- **[Recharts](https://recharts.org/)** - Data visualization
+- **[Lucide React](https://lucide.dev/)** - Icon library
+- **[Date-fns](https://date-fns.org/)** - Date utilities
 
 ## Quick Start
 
 ### Prerequisites
-- [Bun](https://bun.sh) or Node.js 18+
-- OpenAI API key ([get one here](https://platform.openai.com/api-keys))
+
+- Node.js 20.9 or later
+- pnpm (recommended) or npm
 
 ### Installation
 
-1. **Clone and setup**
-```bash
-cd backend
-cp .env.example .env
-# Add your OPENAI_API_KEY to .env
-bun install
-```
+1. **Clone the repository**
 
-2. **Start backend** (Terminal 1)
-```bash
-cd backend
-bun run dev
-```
+   ```bash
+   git clone <repository-url>
+   cd pathly
+   ```
 
-3. **Start frontend** (Terminal 2)
-```bash
-cd frontend
-bun install
-bun run dev
-```
+2. **Install dependencies**
 
-4. **Access the app**
-Open [http://localhost:3000](http://localhost:3000) in your browser
+   ```bash
+   pnpm install
+   # or
+   npm install
+   ```
 
-## Architecture
+3. **Set up environment variables**
 
-### Backend (Express.js + TypeScript)
-- **API**: POST `/api/roadmap/generate` - Generates career roadmaps
-- **LLM**: OpenAI API integration for structured roadmap generation
-- **Validation**: Zod for input/output validation
-- **Error Handling**: Comprehensive error handling middleware
+   ```bash
+   # Create a .env.local file in the root directory
+   # Add your LLM API keys if needed
+   ```
 
-### Frontend (Next.js + React)
-- **Form**: Input topic for roadmap generation
-- **Display**: Mermaid diagrams for visual roadmap representation
-- **Styling**: Tailwind CSS for modern responsive UI
-- **Components**: RoadmapForm, MermaidRenderer
+4. **Run the development server**
 
-## API Endpoints
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+   ```
 
-### POST `/api/roadmap/generate`
+5. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-**Request:**
-```json
-{
-  "topic": "Machine Learning Engineer"
-}
-```
+## Usage
 
-**Response:**
-```json
-{
-  "topic": "Machine Learning Engineer",
-  "mermaidDiagram": "graph TD\n  ...",
-  "structure": {
-    "nodes": [
-      {
-        "id": "node_1",
-        "title": "Python Fundamentals",
-        "description": "Learn Python basics and syntax",
-        "level": "beginner",
-        "estimatedHours": 40
-      }
-    ],
-    "edges": [
-      {"from": "node_1", "to": "node_2"}
-    ]
-  },
-  "generatedAt": "2025-11-08T12:34:56Z"
-}
-```
+1. **Enter Your Learning Topic** - Type in any subject you want to learn (e.g., "Machine Learning", "React", "Data Science")
 
-## Features
+2. **Select Difficulty Level** - Choose from:
+   - Beginner - For those new to the topic
+   - Intermediate - For those with foundational knowledge
+   - Advanced - For experienced learners
 
-- ✅ AI-powered roadmap generation
-- ✅ Structured learning paths with time estimates
-- ✅ Mermaid diagram visualization
-- ✅ Responsive design
-- ✅ Error handling and validation
-- ✅ No database required (stateless)
+3. **Choose Your Timeframe** - Select how much time you have:
+   - 1 Month - Intensive learning
+   - 3 Months - Balanced learning
+   - 6 Months - Comprehensive learning
 
-## Configuration
+4. **Generate Roadmap** - Click the generate button and wait for your personalized roadmap
 
-### Backend (.env)
-```bash
-NODE_ENV=development
-PORT=4000
-OPENAI_API_KEY=sk-...
-OPENAI_MODEL=gpt-3.5-turbo
-OPENAI_BASE_URL=https://api.openai.com/v1
-```
-
-**Note:** The application supports custom OpenAI-compatible endpoints. You can use:
-- OpenAI API (default)
-- Local models via Ollama
-- Other OpenAI-compatible providers
-
-Simply update `OPENAI_BASE_URL` and `OPENAI_MODEL` in your `.env` file.
-
-### Frontend (.env.local)
-```
-NEXT_PUBLIC_API_URL=http://localhost:4000
-```
+5. **Explore Your Roadmap** - Review the detailed plan with:
+   - Learning phases with estimated duration
+   - Recommended resources for each phase
+   - Projects to practice concepts
+   - Milestones to track progress
+   - Community resources for support
 
 ## Project Structure
 
 ```
-.
-├── backend/
-│   ├── src/
-│   │   ├── routes/
-│   │   │   └── roadmap.ts
-│   │   ├── services/
-│   │   │   └── llmService.ts
-│   │   ├── utils/
-│   │   │   ├── validators.ts
-│   │   │   └── mermaidGenerator.ts
-│   │   ├── middleware/
-│   │   │   └── errorHandler.ts
-│   │   ├── app.ts
-│   │   └── index.ts
-│   ├── .env.example
-│   └── package.json
-│
-└── frontend/
-    ├── app/
-    │   ├── page.tsx
-    │   ├── layout.tsx
-    │   └── globals.css
-    ├── components/
-    │   ├── RoadmapForm.tsx
-    │   └── MermaidRenderer.tsx
-    ├── lib/
-    │   ├── types.ts
-    │   └── api.ts
-    ├── .env.example
-    └── package.json
+pathly/
+├── app/                          # Next.js app directory
+│   ├── api/
+│   │   └── generate-roadmap/    # API endpoint for roadmap generation
+│   ├── layout.tsx               # Root layout with metadata
+│   ├── page.tsx                 # Home page
+│   └── globals.css              # Global styles
+├── components/                   # React components
+│   ├── roadmap-form.tsx         # Form component
+│   ├── roadmap-display.tsx      # Roadmap display
+│   ├── theme-provider.tsx       # Theme context
+│   └── ui/                      # shadcn/ui components
+├── hooks/                        # Custom React hooks
+├── lib/                          # Utility functions
+├── public/                       # Static assets
+├── styles/                       # CSS files
+├── next.config.mjs              # Next.js configuration
+├── tailwind.config.ts           # Tailwind CSS configuration
+├── tsconfig.json                # TypeScript configuration
+└── package.json                 # Project dependencies
 ```
 
 ## Development
 
-### Quick Start
-
-Use the provided development script to start both servers:
+### Available Scripts
 
 ```bash
-./dev.sh
+# Start development server with hot reload
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
+
+# Run linting
+pnpm lint
 ```
 
-This will:
-- Validate your configuration
-- Start the backend on port 4000
-- Start the frontend on port 3000
-- Handle cleanup automatically
+### Code Style
 
-### Manual Setup
+- TypeScript for type safety
+- ESLint for code consistency
+- Tailwind CSS for styling
+- shadcn/ui component patterns
 
-If you prefer to start servers manually:
+## API Reference
 
-**Backend (Terminal 1)**
-```bash
-cd backend
-bun install
-bun run dev
+### POST `/api/generate-roadmap`
+
+Generate a personalized learning roadmap.
+
+**Request Body:**
+
+```json
+{
+  "topic": "string",           // Learning topic
+  "difficulty": "string",      // "beginner" | "intermediate" | "advanced"
+  "timeframe": "string"        // "1-month" | "3-months" | "6-months"
+}
 ```
 
-**Frontend (Terminal 2)**
-```bash
-cd frontend
-bun install
-bun run dev
+**Response:**
+
+```json
+{
+  "phases": [
+    {
+      "phase": "string",
+      "duration": "string",
+      "topics": ["string"],
+      "resources": {
+        "courses": ["string"],
+        "tutorials": ["string"],
+        "documentation": ["string"]
+      },
+      "projects": [
+        {
+          "name": "string",
+          "description": "string",
+          "criteria": ["string"]
+        }
+      ]
+    }
+  ],
+  "milestones": ["string"],
+  "assessments": ["string"],
+  "communityResources": {
+    "discord": "string",
+    "forums": "string",
+    "github": "string"
+  }
+}
 ```
-
-### Code Quality
-
-This project uses:
-- **TypeScript** for type safety
-- **Zod** for runtime validation
-- **ESLint** rules via TypeScript strict mode
-- **Tailwind CSS** for consistent styling
-
-### Build Backend
-```bash
-cd backend
-bun run build
-```
-
-### Build Frontend
-```bash
-cd frontend
-bun run build
-```
-
-## Technology Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Frontend | Next.js 16, React 19, Tailwind CSS |
-| Backend | Express.js, TypeScript |
-| Diagrams | Mermaid.js |
-| LLM | OpenAI API |
-| Validation | Zod |
-
-## Notes
-
-- The MVP focuses on core functionality without caching, databases, or user accounts
-- Diagrams are generated on the backend using Mermaid syntax
-
-## Future Enhancements
-
-- [ ] Caching for popular roadmaps
-- [ ] Download diagrams as images
-- [ ] Share roadmaps via links
-- [ ] Pre-built example roadmaps
-- [ ] Advanced prompt engineering
-- [ ] Multiple language support
 
 ## License
 
-Unlicense
+This project is licensed under the Unlicense License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Built with [Next.js](https://nextjs.org/)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Icons from [Lucide](https://lucide.dev/)
+- AI powered by [Llama 4 Maverick](https://www.llama.com/models/llama-4/)
